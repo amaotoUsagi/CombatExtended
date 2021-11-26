@@ -78,6 +78,11 @@
 		  <dropsCasings>true</dropsCasings>
 		  <casingMoteDefname>Mote_BigShell</casingMoteDefname>
 		  <gravityFactor>5</gravityFactor>
+		  <shellingProps>
+			<tilesPerTick>0.07</tilesPerTick>
+			<range>18</range>
+			<damage>0.045</damage>	
+		  </shellingProps>		  
 		</projectile>
 	</ThingDef>
 

@@ -31,7 +31,6 @@
 		<defName>Bullet_130mmType63_SSM</defName>
 		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
 		<label>130mm Type 63 Rocket (HE)</label>
-		
 		<graphicData>
 			<texPath>Things/Projectile/Rocket/130mmType63</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -42,6 +41,11 @@
 			<explosionRadius>3.5</explosionRadius>
 			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
 			<speed>0</speed>
+			<shellingProps>
+				<tilesPerTick>0.08</tilesPerTick>
+				<range>20</range>
+				<damage>0.065</damage>	
+			  </shellingProps>			
 		</projectile>
 		<comps>
 			<li Class="CombatExtended.CompProperties_Fragments">
