@@ -348,9 +348,17 @@ namespace CombatExtended
                     }
                     else if (currentTarget.Thing is Pawn)
                     {
-                        // Aim for center of mass on an exposed target
-                        targetRange.min = victimVert.BottomHeight;
-                        targetRange.max = victimVert.MiddleHeight;
+			if (SightsEfficiency * ShootingAccuracy * AimingAccuracy >= 1) // Sniping, shoot for the head
+			{
+			    targetRange.min = victimVert.MiddleHeight;
+			    targetRange.max = victimVert.Max;
+			}
+			else
+			{
+			    // Aim for center of mass on an exposed target
+			    targetRange.min = victimVert.BottomHeight;
+			    targetRange.max = victimVert.MiddleHeight;
+			}
                     }
                     targetHeight = VerbPropsCE.ignorePartialLoSBlocker ? 0 : targetRange.Average;
                 }
