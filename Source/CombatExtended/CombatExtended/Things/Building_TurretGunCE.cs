@@ -50,6 +50,8 @@ namespace CombatExtended
         public bool isReloading = false;
         private int ticksUntilAutoReload = 0;
         private bool everSpawned = false;
+	private bool _isMortar = false;
+	private bool _isMortarChecked = false;
 
         #endregion
 
@@ -64,7 +66,25 @@ namespace CombatExtended
         public bool PlayerControlled => (Faction == Faction.OfPlayer || MannedByColonist) && !MannedByNonColonist;
         private bool CanSetForcedTarget => mannableComp != null && PlayerControlled;
         private bool CanToggleHoldFire => PlayerControlled;
-        private bool IsMortar => def.building.IsMortar;
+        private bool IsMortar
+	{
+	    get
+	    {
+		if (!_isMortarChecked)
+		{
+		    try
+		    {
+			_isMortar = def.building.IsMortar;
+		    }
+		    catch
+		    {
+			_isMortar = false;
+		    }
+		    _isMortarChecked = true;
+		}
+		return _isMortar;
+	    }
+	}
         private bool IsMortarOrProjectileFliesOverhead => Projectile.projectile.flyOverhead || IsMortar;
         //Not included: CanExtractShell
         private bool MannedByColonist => mannableComp != null && mannableComp.ManningPawn != null
